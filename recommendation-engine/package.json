@@ -1,0 +1,35 @@
+{
+  "name": "recommendation-engine",
+  "version": "1.0.0",
+  "description": "Personalized Recommendation Engine module for AI-Assisted Proctored Learning & Assessment Platform",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "worker": "node src/workers/recommendation.worker.js",
+    "worker:dev": "nodemon src/workers/recommendation.worker.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev --name init",
+    "prisma:seed": "prisma db seed",
+    "prisma:studio": "prisma studio",
+    "test": "jest --runInBand"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.20.0",
+    "bullmq": "^5.12.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "ioredis": "^5.4.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4",
+    "prisma": "^5.20.0"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: reco-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: reco_user
+      POSTGRES_PASSWORD: reco_pass
+      POSTGRES_DB: reco_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - reco_pg_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    container_name: reco-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - reco_redis_data:/data
+
+volumes:
+  reco_pg_data:
+  reco_redis_data:

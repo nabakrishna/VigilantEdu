@@ -1,0 +1,72 @@
+{
+  "success": true,
+  "data": {
+    "studentId": "22222222-2222-2222-2222-222222222222",
+    "mode": "COLD_START",
+    "weakSubtopics": [],
+    "questions": [
+      {
+        "id": "d86e02df-2acd-4acc-8a50-03fafe46a210",
+        "subtopicId": "9c5ad6a6-849f-49b8-88eb-48bcec4f8c88",
+        "difficulty": "EASY",
+        "questionText": "[Geometry - EASY #1] Sample question text goes here?",
+        "options": {
+          "A": "Option A",
+          "B": "Option B",
+          "C": "Option C",
+          "D": "Option D"
+        },
+        "sourceTopicId": "0f56d9d3-8424-49da-b0f3-90a967839f62",
+        "sourceTopicName": "Mathematics",
+        "reason": "Baseline practice (no test history yet)"
+      },
+      {
+        "id": "e0b916ce-7030-40aa-b1fb-6f1e558e40fb",
+        "subtopicId": "2972163c-7cb1-4e49-9d73-b7a8577134dc",
+        "difficulty": "EASY",
+        "questionText": "[Trigonometry - EASY #3] Sample question text goes here?",
+        "options": {
+          "A": "Option A",
+          "B": "Option B",
+          "C": "Option C",
+          "D": "Option D"
+        },
+        "sourceTopicId": "0f56d9d3-8424-49da-b0f3-90a967839f62",
+        "sourceTopicName": "Mathematics",
+        "reason": "Baseline practice (no test history yet)"
+      },
+      {
+        "id": "d3dacc64-679f-4bd3-88a2-3af398c25448",
+        "subtopicId": "c99a4a95-89e0-4e6c-8420-4e2e4983ea22",
+        "difficulty": "MEDIUM",
+        "questionText": "[Chemistry - MEDIUM #2] Sample question text goes here?",
+        "options": {
+          "A": "Option A",
+          "B": "Option B",
+          "C": "Option C",
+          "D": "Option D"
+        },
+        "sourceTopicId": "7a382b4a-4b09-4a9d-8774-157423894a9b",
+        "sourceTopicName": "Science",
+        "reason": "Baseline practice (no test history yet)"
+      },
+      {
+        "id": "46d58f8e-e4da-4804-acde-694841a822dc",
+        "subtopicId": "c99a4a95-89e0-4e6c-8420-4e2e4983ea22",
+        "difficulty": "MEDIUM",
+        "questionText": "[Chemistry - MEDIUM #4] Sample question text goes here?",
+        "options": {
+          "A": "Option A",
+          "B": "Option B",
+          "C": "Option C",
+          "D": "Option D"
+        },
+        "sourceTopicId": "7a382b4a-4b09-4a9d-8774-157423894a9b",
+        "sourceTopicName": "Science",
+        "reason": "Baseline practice (no test history yet)"
+      }
+    ],
+    "generatedAt": "2026-08-24T15:43:42.766Z",
+    "source": "CACHE"
+  }
+}

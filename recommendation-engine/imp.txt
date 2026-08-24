@@ -1,0 +1,25 @@
+cd recommendation-engine
+npm install
+docker compose up -d              # starts Postgres + Redis
+cp .env.example .env              # already matches Docker above
+npx prisma generate
+npx prisma migrate dev --name init  # creates the actual tables
+npx prisma db seed                  # loads sample data
+npm run dev                         # terminal 1: API on :4000
+npm run worker:dev                  # terminal 2: async worker
+
+
+
+
+
+for bug: Error: P1001: Can't reach database server at `localhost:5433`
+ follw this---
+ 
+docker compose down -v
+docker compose up -d
+
+docker-compose.yml-  
+ports:
+      - "5433:5432"
+.env- 
+DATABASE_URL="postgresql://reco_user:reco_pass@localhost:5433/reco_db?schema=public"

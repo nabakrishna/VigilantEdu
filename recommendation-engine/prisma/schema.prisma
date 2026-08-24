@@ -1,0 +1,83 @@
+// ==========================================================================
+// Prisma Schema — Recommendation Engine Module
+//
+// LOCAL / STANDALONE TESTING MODE:
+// This schema is used with `prisma migrate dev` to CREATE these tables in
+// a fresh local database (via Docker — see docker-compose.yml). `@@map`
+// pins each model to the same snake_case table names the real platform
+// spec uses, so if you later point this module at an EXISTING production
+// database instead, the table/column names already line up and no code
+// changes are needed — you'd just skip running migrations and run
+// `prisma db pull` instead to double check alignment.
+//
+// studentId fields are plain strings (not a `Student` relation) because
+// the platform's user/auth system is a separate service/table this module
+// doesn't own — see README "Integrating into the Existing Application".
+// ==========================================================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
+
+model Topic {
+  id        String     @id @default(uuid())
+  name      String
+  subtopics Subtopic[]
+
+  @@map("topics")
+}
+
+model Subtopic {
+  id        String     @id @default(uuid())
+  topicId   String     @map("topic_id")
+  name      String
+  topic     Topic      @relation(fields: [topicId], references: [id])
+  questions Question[]
+  responses TestResponse[]
+
+  @@index([topicId])
+  @@map("subtopics")
+}
+
+model Question {
+  id             String     @id @default(uuid())
+  subtopicId     String     @map("subtopic_id")
+  difficulty     Difficulty
+  questionText   String     @map("question_text")
+  options        Json
+  correctOption  String     @map("correct_option")
+  subtopic       Subtopic   @relation(fields: [subtopicId], references: [id])
+  responses      TestResponse[]
+
+  // Matches spec: index exists on questions(subtopic_id, difficulty)
+  @@index([subtopicId, difficulty])
+  @@map("questions")
+}
+
+model TestResponse {
+  id         String   @id @default(uuid())
+  studentId  String   @map("student_id")
+  questionId String   @map("question_id")
+  subtopicId String   @map("subtopic_id")
+  isCorrect  Boolean  @map("is_correct")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  question   Question @relation(fields: [questionId], references: [id])
+  subtopic   Subtopic @relation(fields: [subtopicId], references: [id])
+
+  // Matches spec: index exists on test_responses(student_id, subtopic_id)
+  @@index([studentId, subtopicId])
+  @@index([studentId, questionId])
+  @@map("test_responses")
+}
