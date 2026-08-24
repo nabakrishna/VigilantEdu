@@ -1,0 +1,4 @@
+*.sql linguist-detectable=true
+*.sql linguist-vendored=false
+prisma/migrations/**/*.sql linguist-detectable=true
+prisma/migrations/**/*.sql linguist-vendored=false
